@@ -1,0 +1,1404 @@
+:root{
+    --btn-bg: #A595C6;
+    --btn-text: white;
+    --btn-hover-bg: grey;
+    --btn-transition: 0.3s;
+    --fond-texte: #BFBEBE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+}
+
+
+/**************************** Acceuil ********************/
+
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* NAV */
+nav {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-toggle{
+    display:none;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 80px;
+}
+
+/* NAVIGATION */
+.Navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #A595C6;
+}
+
+nav a.active {
+    color: #A595C6;
+}
+
+/* DROPDOWN */
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+}
+
+.arrow {
+    font-size: 0.7em;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.dropdown-menu li:first-child {
+    margin-top: 10px;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+/* MAIN CONTENT */
+body {
+    padding-top: 100px;
+    font-family: Arial, sans-serif;
+}
+
+/* ACCUEIL */
+.acceuil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.bougie {
+    width: 100%;
+    height: 70vh;
+    max-height: 600px;
+    min-height: 400px;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.Titre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+
+.fond-camion {
+    width: 100%;
+    max-width:600px;
+    margin: 10px auto 0;
+    background-color: var(--btn-bg);
+    border-radius: 28px 28px 60% 28px;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.camion-specifique {
+    width: 100%;
+    display: block;
+    border-radius: 28px 28px 60% 28px;
+}
+
+.Titre .btn-small {
+    width: auto;
+    align-self: center;
+    display: inline-block;
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 16px;
+    min-width: 150px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    transition: background-color var(--btn-transition), color var(--btn-transition);
+}
+
+.btn-small:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-text);
+}
+
+/* PRÉSENTATION */
+.presentation {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    height: 350px;
+    margin: 50px auto;
+    gap: 20px;
+}
+
+.presentation-titre {
+    width: 30%;
+    background-color: var(--fond-texte);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 0 0 5px;
+    border-bottom-right-radius: 30%;
+    padding: 0 10px;
+}
+
+.presentation-titre h2 {
+    color: white;
+}
+
+.presentation-texte {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 40px;
+    gap: 20px;
+}
+
+.presentation-texte p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.texte-bas {
+    display: flex;
+    justify-content: center;
+}
+
+/* PRESTATIONS */
+.prestations {
+    display: flex;
+    width: 80%;
+    height: 350px;
+    max-width: 1200px;
+    margin: 50px auto;
+    gap: 20px;
+}
+
+.prestations-items {
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0 auto;
+}
+
+.prestation-item {
+    flex: 1;
+    padding: 20px;
+}
+
+.prestation-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.prestation-item p {
+    font-size: 30px;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.prestation-item a{
+    margin-bottom: 10px;
+}
+
+.prestations-titre {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fond-texte);
+    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    border-top-left-radius: 30%;
+}
+
+.prestations-titre h2 {
+    color: white;
+    padding: 20px;
+}
+
+/* BOUTONS COMMUNS */
+.btn {
+    display: inline-block;
+    padding: 16px 31px;
+    font-size: 17px;
+    text-decoration: none;
+    border-radius: 28px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    cursor: pointer;
+    transition: background-color var(--btn-transition), color var(--btn-transition);
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-text);
+}
+
+/* FOOTER */
+footer {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.mention-legales {
+    color: white;
+    text-decoration: none;
+}
+
+.mention-legales:hover {
+    color: var(--btn-bg);
+}
+
+/* Social button */
+.facebook-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #1877F2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.facebook-btn:hover {
+    background-color: #0d5ed7;
+    transform: scale(1.05);
+}
+
+/****************************Transport specifique***********************/
+
+.transportspe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.descriptioncrafter {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.descriptioncrafter > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptioncrafter > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.descriptioncrafter > div:last-child {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cerceuil {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0 0 0 50%;
+}
+
+.textecrafter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.textecrafter h2{
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.separateur-texte {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+                /* Carrousel */
+
+/* Conteneur global du carrousel */
+
+.galerie {
+    width:100%;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.carousel-main {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+}
+
+/* Boutons next / prev */
+.carousel button {
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:none;
+    background:rgba(165,149,198,0.9);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.carousel-main button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+.carousel-dots .dot {
+    width:10px;
+    height:10px;
+    background:#ccc;
+}
+
+.carousel-dots .dot.active {
+    background:#A595C6;
+    transform:scale(1.2);
+}
+
+.dot.active {
+    background: #A595C6;
+}
+
+
+.carousel button:hover {
+    background: #A595C6;
+}
+
+.carousel button img {
+    width: 24px;
+    height: 24px;
+}
+
+#prev {
+    left:-70px;
+}
+
+
+#next {
+    right:-70px;
+}
+
+/* Conteneur des slides */
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+}
+
+.carousel-inner .slide {
+    flex: 0 0 100%;
+}
+
+
+/* Chaque slide */
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    cursor: zoom-in;
+}
+
+/* Style des dots de navigation */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.carousel-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Gris clair */
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.carousel-dots .dot.active {
+    background-color: #A595C6; /* Couleur de l'élément actif */
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.lightbox button:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.lightbox .prev { left: 20px; }
+.lightbox .next { right: 20px; }
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+
+/****************************Transport Classique***********************/
+
+.transportclassique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.vehiculepresentation{
+    width: 80%;
+}
+
+.peugvolk{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    gap: 10%;
+}
+
+
+.peugexpert{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.peugexpert p{
+    line-height: 2;
+}
+
+.peugexpert li{
+    line-height: 2;
+}
+
+.volktransporteur{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.volktransporteur p{
+    line-height: 2;
+}
+
+.volktransporteur li{
+    line-height: 2;
+}
+
+.map-section{
+    margin: 30px 0;
+}
+
+
+.map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+
+.dimension{
+    text-decoration: underline;
+}
+
+.imagecamion{
+    display: flex;
+    gap: 30px;
+}
+
+.imagecamion img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.imagecamion img:hover {
+    transform: scale(1.2);
+    cursor: zoom-in;
+}
+
+
+
+
+/****************************Thanatopraxie***********************/
+
+.texte-thanato {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.texte {
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    gap: 60px;
+}
+
+.texte > div:first-child {
+    flex: 2;
+}
+
+.images-thanato {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.images-thanato img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.texte p {
+    margin: 20px 0;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.texte h2 {
+    margin-bottom: 30px;
+}
+
+.experience-thanato{
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/****************************Presentation***********************/
+
+.presentation-quisuisje{
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.quisuisje{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texte-quisuisje p {
+    margin: 20px 0;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.photo-presentation {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0
+}
+
+/****************************Mentions légales******************************/
+
+.mention-legal-texte {
+    width: 80%;
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.mention-legal-texte h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.mention-legal-texte p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333;
+}
+
+
+
+
+
+/****************************Haut de page***********************/
+
+.haut-de-page{
+    position: relative;
+    width: 100%;
+}
+
+.haut-de-page h1{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    color: white;
+    font-size: 52px;
+    font-family: 'Dancing Script', handwriting;
+    text-shadow: 
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        1px -1px 2px black,
+        -1px 1px 2px black;
+}
+
+.bougie2 {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    opacity: 0.6;
+    display: block;
+}
+
+.mention-legal-texte{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+
+
+/********************************* CONTACT ******************************/
+
+
+.contact-container {
+    display: flex;
+    gap: 40px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 50px auto;
+    align-items: flex-start;
+}
+
+        /* FORMULAIRE */
+.formulaire {
+    flex: 2;
+}
+
+.formulaire h2 {
+    margin-bottom: 10px;
+}
+
+.formulaire p {
+    margin-bottom: 20px;
+}
+
+
+.formulaire form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.ligne {
+    display: flex;
+    gap: 20px;
+}
+
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+            /* Inputs */
+input, textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    background-color: #e6e6e6;
+}
+
+            /* Message */
+textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+            /* Bouton */
+.formulaire button {
+    background-color: #A595C6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 20%;
+}
+
+
+button:hover {
+    background-color: grey;
+}
+
+#success-message {
+    display: none;
+    color: green;
+    margin-top: 10px;
+}
+
+        /* INFOS */
+.information {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #A595C6;
+}
+
+.information h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.information a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.information a:hover {
+    color: #A595C6;
+}
+
+        /* Ligne icone + texte */
+.info-ligne {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+        /* Icônes */
+.info-ligne img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+        /* Texte à côté */
+.info-ligne a,
+.info-ligne p,
+.info-ligne address {
+    margin: 0;
+    line-height: 1.4;
+}
+
+        /* Adresse bloc */
+.info-ligne address {
+    font-style: normal;
+}
+
+/* Message erreur */
+
+.success-message {
+    display: none;
+    color: green;
+    background: #e8ffe8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    display: none;
+    color: red;
+    background: #ffe8e8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/************************** RESPONSIVE **********************************/
+@media (max-width: 768px) {
+    /************************* General ************************/
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2rem;
+    }
+
+    header {
+        position: relative;
+        height: 70px;
+        padding: 10px 20px;
+        z-index:3000;
+    }
+
+    body {
+        padding-top: 0;
+        background-color: white;
+    }
+
+    nav{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap:15px;
+        flex-wrap:wrap;
+    }
+
+    .logo img{
+        max-height:40px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+    }
+
+    nav a{
+        font-size:15px;
+        padding:8px;
+    }
+
+    .menu-toggle{
+        display:block;
+        border:none;
+        background:none;
+        font-size:35px;
+        cursor:pointer;
+    }
+
+    .Navigation{
+        display:none;
+        width:100%;
+    }
+
+    .Navigation.active{
+        display:block;
+        background-color: white;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        z-index: 2000;
+    }
+
+    .Navigation ul{
+        display:flex;
+        flex-direction:column;
+        width:100%;
+    }
+
+    .Navigation li{
+        width:100%;
+    }
+
+    .Navigation a{
+        justify-content:center;
+        padding:12px;
+        border-top:1px solid #ddd;
+    }
+
+    .dropdown {
+        display: block;
+        margin: 0;
+        padding:0;
+    }
+
+
+    .dropdown-menu {
+        display: none;
+        position: static;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        box-shadow: none;
+        margin: 0;
+        border-top:none;
+    }
+
+    .dropdown-menu li {
+        width: 100%;
+    }
+
+    .dropdown-menu a {
+        padding: 12px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+        justify-content: center;
+    }
+
+    .dropdown > .dropdown-toggle {
+        display: none;
+        margin: 0;
+        padding:0;
+    }
+
+    .dropdown-menu li:first-child {
+        margin-top: 0;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display:flex;
+    }
+
+    .bougie {
+        height: 60vh;
+        min-height: 500px;
+        max-height: 700px;
+    }
+
+    .haut-de-page h1 {
+        width: 100%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+
+    .separateur-texte {
+        width: 30%;
+        margin: 20px auto;
+    }
+
+    footer .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    footer .footer-content p {
+        margin: 0;
+    }
+
+    footer .footer-content .btn {
+        margin: 5px auto;
+    }
+
+
+
+    /************************* Acceuil ************************/
+    .Titre{
+        width:90%;
+        top: 60%;
+    }
+
+    .Titre h1{
+        font-size:2rem;
+    }
+    .presentation{
+        flex-direction:column;
+        height:auto;
+        width:90%;
+        margin: 50px auto;
+    }
+
+    .presentation-titre,
+    .presentation-texte{
+        width:100%;
+    }
+
+    .presentation-texte{
+        padding: 20px;
+        min-height: 180px;
+    }
+
+    .presentation-titre{
+        min-height: 100px;
+    }
+
+    .presentation-titre h2 {
+        font-size: 2.2rem;
+    }
+
+    .presentation-texte p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .prestations{
+        flex-direction:column-reverse;
+        height:auto;
+        width:90%;
+    }
+
+    .prestations-titre{
+        width:100%;
+        min-height: 100px;
+    }
+
+    .prestations-items{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .prestation-item{
+        width: 90%;
+        max-width: 420px;
+        margin: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .prestation-item img{
+        width: 80%;
+        max-height: 180px;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+
+    .prestation-item p{
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+        margin: 8px 0;
+    }
+
+    .prestation-item .btn{
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .prestation-item a{
+        display: inline-block;
+        margin: 10px auto;
+    }
+
+
+
+
+    /************************* Transport spécifique ************************/
+    .descriptioncrafter {
+        flex-direction: column;
+        width: 90%;
+        margin: 30px auto;
+        gap: 30px;
+    }
+
+    .descriptioncrafter > div:first-child {
+        width: 100%;
+        align-items: center;
+    }
+
+    .descriptioncrafter > div:last-child {
+        width: 100%;
+    }
+
+    .textecrafter {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .textecrafter h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .textecrafter p {
+        text-align: justify;
+        line-height: 1.6;
+    }
+
+    .cerceuil {
+        width: 100%;
+        border-radius: 0 0 0 30%;
+    }
+
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .ligne {
+        flex-direction: column;
+    }
+
+    .slide img {
+        max-width: 85%;
+        max-height: 240px;
+    }
+
+    .carousel {
+        flex-direction: column;
+        width: 95%;
+        margin: 40px auto;
+    }
+
+
+    .carousel-inner {
+        height: 250px;
+    }
+
+    .carousel button {
+        width:35px;
+        height:35px;
+        font-size:18px;
+        background: rgba(165,149,198,0.9);
+    }
+
+    .carousel-main button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .carousel-main {
+        overflow:hidden;
+    }
+
+    #prev {
+        left:8px;
+    }
+
+    #next {
+        right:8px;
+    }
+
+
+    
+}

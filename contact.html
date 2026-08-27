@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Transport Funéraire Bretagne</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./Images/acceuil/Logo-Jean-marie-crocq-2.png" alt="Logo">
+                </a>
+            </div>
+
+            <div class="Navigation">
+                <ul>
+                    <li><a href="./index.html">Accueil</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Transport funéraires <span class="arrow">▼</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./transports-specifiques.html">Transports spécifiques</a></li>
+                            <li><a href="./transports-classiques.html">Transports classique</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="./thanatopraxie.html">Thanatopraxie</a></li>
+                    <li><a href="./presentation.html">Présentation</a></li>
+                    <li><a href="./contact.html" class="active">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="haut-de-page">
+            <img src="./Images/acceuil/bougies-deuil-funeraire.jpg" class="bougie2" alt="Bougies deuil">
+            <h1>Contact</h1>
+        </div>
+
+        <div class="contact-container">
+
+            <!-- FORMULAIRE -->
+            <div class="formulaire">
+                <h2>Pour plus de renseignements...</h2>
+                <p>Veuillez remplir le formulaire afin que je puisse répondre à vos attentes dans les plus brefs délais.</p>
+
+                <p id="success-message" class="success-message"></p>
+                <p id="error-message" class="error-message"></p>
+
+                <form id="contactForm">
+                    <div class="ligne">
+                    <div class="champ">
+                        <input type="text" id="nom" name="nom" placeholder="Nom">
+                    </div>
+
+                    <div class="champ">
+                        <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                    </div>
+                    </div>
+
+                    <div class="ligne">
+                    <div class="champ">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+
+                    <div class="champ">
+                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone">
+                    </div>
+                    </div>
+
+                    <div class="champ">
+                    <textarea id="message" name="message" placeholder="Votre message"></textarea>
+                    </div>
+
+                    <input type="text" name="website" autocomplete="off" tabindex="-1" style="display:none">
+
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+
+
+            <!-- INFOS A DROITE -->
+            <div class="information">
+
+                <h3>Transport</h3>
+                <div class="info-ligne">
+                    <img src="./Images/Contact/mobile_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="icone téléphone">
+                    <a href="tel:0684196247">06 84 19 62 47</a>
+                </div>
+
+                <h3>Thanatopraxie</h3>
+                <div class="info-ligne">
+                    <img src="./Images/Contact/mobile_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="icone téléphone">
+                    <a href="tel:0669405156">06 69 40 51 56</a>
+                </div>
+
+                <h3>Email</h3>
+                <div class="info-ligne">
+                    <img src="./Images/Contact/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="icone mail">
+                    <a href="mailto:crocqjeanmarie56@gmail.com">crocqjeanmarie56@gmail.com</a>
+                </div>
+
+                <h3>Adresse</h3>
+                <div class="info-ligne">
+                    <img src="./Images/Contact/explore_nearby_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="icone adresse">
+                    <div>
+                        <p>Siège social</p>
+                        <address>
+                            15 impasse KERBREDEVA<br>
+                            56400 PLOEMEL<br>
+                            <a href="https://www.google.com/maps?q=15+impasse+KERBREDEVA,+56400+PLOEMEL" target="_blank">
+                                Voir sur Google Maps
+                            </a>
+                        </address>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; Jean-Marie CROCQ | 2024</p>
+            <div class="mecontacter">
+                <p><a href="./contact.html" class="btn">Me contacter</a></p>
+            </div>
+            <p><a href="./mentions-legales.html" class="mention-legales">Mentions légales</a></p>
+
+            <div class="social">
+                <a href="https://www.facebook.com/Transportfunerairebretagne" target="_blank" class="facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
