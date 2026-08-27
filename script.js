@@ -18,7 +18,6 @@ if (bouton && menu) {
 
 /**************************************************
  * FORMULAIRE DE CONTACT
- * GitHub Pages → Cloudflare Worker → Brevo
  **************************************************/
 
 const form = document.getElementById("contactForm");
@@ -68,8 +67,6 @@ if (form) {
         const website =
             document.getElementById("website").value.trim();
 
-
-        // Validation côté navigateur
 
         const erreurs = [];
 
@@ -164,7 +161,6 @@ if (form) {
         }
 
 
-        // Désactiver le bouton pendant l'envoi
 
         const submitButton =
             form.querySelector("button[type='submit']");
@@ -178,7 +174,6 @@ if (form) {
         }
 
 
-        // Données envoyées à Cloudflare
 
         const data = {
 
@@ -195,8 +190,6 @@ if (form) {
         try {
 
 
-            // Envoi vers le Worker Cloudflare
-
             const response = await fetch(
                 CLOUDFLARE_WORKER_URL,
                 {
@@ -212,13 +205,9 @@ if (form) {
             );
 
 
-            // Lecture de la réponse
-
             const result =
                 await response.json();
 
-
-            // Cloudflare indique une erreur
 
             if (!response.ok || !result.success) {
 
@@ -243,8 +232,6 @@ if (form) {
             }
 
 
-            // SUCCÈS
-
             if (successMessage) {
 
                 successMessage.textContent =
@@ -256,7 +243,6 @@ if (form) {
             }
 
 
-            // Vider le formulaire
 
             form.reset();
 
@@ -283,7 +269,6 @@ if (form) {
         } finally {
 
 
-            // Réactiver le bouton
 
             if (submitButton) {
 
@@ -299,9 +284,6 @@ if (form) {
 }
 
 
-/**************************************************
- * CARROUSEL
- **************************************************/
 
 /**************************************************
  * CARROUSEL
@@ -324,9 +306,6 @@ if (
     slides.length > 0
 ) {
 
-    /*
-     * Création des points
-     */
 
     slides.forEach((slide, index) => {
 
@@ -343,18 +322,13 @@ if (
     });
 
 
-    /*
-     * Affichage d'une image
-     */
 
     function showSlide(index) {
 
-        // Retour à la dernière image
         if (index < 0) {
             currentIndex = slides.length - 1;
         }
 
-        // Retour à la première image
         else if (index >= slides.length) {
             currentIndex = 0;
         }
@@ -364,9 +338,6 @@ if (
         }
 
 
-        /*
-         * Déplacement du carrousel
-         */
 
         const position =
             currentIndex * slidesContainer.clientWidth;
@@ -377,9 +348,6 @@ if (
         });
 
 
-        /*
-         * Mise à jour des points
-         */
 
         const dots =
             dotsContainer.querySelectorAll(".dot");
@@ -396,9 +364,6 @@ if (
     }
 
 
-    /*
-     * Bouton précédent
-     */
 
     prevBtn.addEventListener("click", () => {
 
@@ -407,9 +372,6 @@ if (
     });
 
 
-    /*
-     * Bouton suivant
-     */
 
     nextBtn.addEventListener("click", () => {
 
@@ -417,10 +379,6 @@ if (
 
     });
 
-
-    /*
-     * Flèches du clavier
-     */
 
     document.addEventListener("keydown", (e) => {
 
@@ -439,9 +397,6 @@ if (
     });
 
 
-    /*
-     * Première image
-     */
 
     showSlide(0);
 
@@ -486,9 +441,6 @@ if (
         close.innerHTML = "&times;";
 
 
-        /*
-         * Afficher l'image
-         */
 
         function updateImage() {
 
@@ -500,9 +452,7 @@ if (
         }
 
 
-        /*
-         * Image précédente
-         */
+
 
         prev.addEventListener("click", () => {
 
@@ -517,9 +467,6 @@ if (
         });
 
 
-        /*
-         * Image suivante
-         */
 
         next.addEventListener("click", () => {
 
@@ -534,9 +481,7 @@ if (
         });
 
 
-        /*
-         * Fermer
-         */
+
 
         close.addEventListener("click", () => {
 
@@ -558,10 +503,6 @@ if (
 
     }
 
-
-    /*
-     * Cliquer sur une image
-     */
 
     slides.forEach((slide, index) => {
 
