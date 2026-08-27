@@ -303,6 +303,10 @@ if (form) {
  * CARROUSEL
  **************************************************/
 
+/**************************************************
+ * CARROUSEL
+ **************************************************/
+
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const slidesContainer = document.querySelector(".carousel-inner");
@@ -310,6 +314,7 @@ const slides = document.querySelectorAll(".slide");
 const dotsContainer = document.querySelector(".carousel-dots");
 
 let currentIndex = 0;
+
 
 if (
     prevBtn &&
@@ -319,16 +324,18 @@ if (
     slides.length > 0
 ) {
 
-    slides.forEach((_, index) => {
+    /*
+     * Création des points
+     */
+
+    slides.forEach((slide, index) => {
 
         const dot = document.createElement("span");
 
         dot.classList.add("dot");
 
         dot.addEventListener("click", () => {
-
             showSlide(index);
-
         });
 
         dotsContainer.appendChild(dot);
@@ -336,49 +343,84 @@ if (
     });
 
 
-    function updateCarousel() {
-
-        slidesContainer.style.transform =
-            `translate3d(-${currentIndex * 100}%,0,0)`;
-
-
-        document
-            .querySelectorAll(".dot")
-            .forEach((dot, index) => {
-
-                dot.classList.toggle(
-                    "active",
-                    index === currentIndex
-                );
-
-            });
-
-    }
-
+    /*
+     * Affichage d'une image
+     */
 
     function showSlide(index) {
 
-        currentIndex =
-            (index + slides.length) % slides.length;
+        // Retour à la dernière image
+        if (index < 0) {
+            currentIndex = slides.length - 1;
+        }
 
-        updateCarousel();
+        // Retour à la première image
+        else if (index >= slides.length) {
+            currentIndex = 0;
+        }
+
+        else {
+            currentIndex = index;
+        }
+
+
+        /*
+         * Déplacement du carrousel
+         */
+
+        const position =
+            currentIndex * slidesContainer.clientWidth;
+
+        slidesContainer.scrollTo({
+            left: position,
+            behavior: "smooth"
+        });
+
+
+        /*
+         * Mise à jour des points
+         */
+
+        const dots =
+            dotsContainer.querySelectorAll(".dot");
+
+        dots.forEach((dot, index) => {
+
+            dot.classList.toggle(
+                "active",
+                index === currentIndex
+            );
+
+        });
 
     }
 
 
-    nextBtn.onclick = () => {
+    /*
+     * Bouton précédent
+     */
 
-        showSlide(currentIndex + 1);
-
-    };
-
-
-    prevBtn.onclick = () => {
+    prevBtn.addEventListener("click", () => {
 
         showSlide(currentIndex - 1);
 
-    };
+    });
 
+
+    /*
+     * Bouton suivant
+     */
+
+    nextBtn.addEventListener("click", () => {
+
+        showSlide(currentIndex + 1);
+
+    });
+
+
+    /*
+     * Flèches du clavier
+     */
 
     document.addEventListener("keydown", (e) => {
 
@@ -387,7 +429,6 @@ if (
             showSlide(currentIndex + 1);
 
         }
-
 
         if (e.key === "ArrowLeft") {
 
@@ -398,7 +439,11 @@ if (
     });
 
 
-    updateCarousel();
+    /*
+     * Première image
+     */
+
+    showSlide(0);
 
 
     /**************************************************
@@ -424,14 +469,14 @@ if (
             document.createElement("button");
 
         prev.className = "prev";
-        prev.innerHTML = "←";
+        prev.textContent = "←";
 
 
         const next =
             document.createElement("button");
 
         next.className = "next";
-        next.innerHTML = "→";
+        next.textContent = "→";
 
 
         const close =
@@ -441,6 +486,10 @@ if (
         close.innerHTML = "&times;";
 
 
+        /*
+         * Afficher l'image
+         */
+
         function updateImage() {
 
             img.src =
@@ -448,38 +497,52 @@ if (
                     .querySelector("img")
                     .src;
 
-            updateCarousel();
-
         }
 
 
-        prev.onclick = () => {
+        /*
+         * Image précédente
+         */
 
-            currentIndex =
-                (currentIndex - 1 + slides.length)
-                % slides.length;
+        prev.addEventListener("click", () => {
 
-            updateImage();
+            currentIndex--;
 
-        };
-
-
-        next.onclick = () => {
-
-            currentIndex =
-                (currentIndex + 1)
-                % slides.length;
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
 
             updateImage();
 
-        };
+        });
 
 
-        close.onclick = () => {
+        /*
+         * Image suivante
+         */
+
+        next.addEventListener("click", () => {
+
+            currentIndex++;
+
+            if (currentIndex >= slides.length) {
+                currentIndex = 0;
+            }
+
+            updateImage();
+
+        });
+
+
+        /*
+         * Fermer
+         */
+
+        close.addEventListener("click", () => {
 
             overlay.remove();
 
-        };
+        });
 
 
         updateImage();
@@ -496,9 +559,16 @@ if (
     }
 
 
-    document
-        .querySelectorAll(".slide img")
-        .forEach((img, index) => {
+    /*
+     * Cliquer sur une image
+     */
+
+    slides.forEach((slide, index) => {
+
+        const img =
+            slide.querySelector("img");
+
+        if (img) {
 
             img.addEventListener("click", () => {
 
@@ -506,6 +576,9 @@ if (
 
             });
 
-        });
+        }
+
+    });
 
 }
+
