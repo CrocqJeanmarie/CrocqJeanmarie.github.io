@@ -1125,22 +1125,42 @@ button:hover {
         background-color: white;
     }
 
-    nav{
-        display:flex;
+    nav {
+        display: flex;
         justify-content: space-between;
         align-items: center;
-        gap:15px;
-        flex-wrap:wrap;
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        min-width: 0;
     }
 
     .logo img{
         max-height:40px;
+        width: auto;
     }
 
     nav ul{
         flex-wrap:wrap;
         justify-content:center;
         gap:10px;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+        border: none;
+        background-color: transparent;
+        color: #333;
+        font-size: 35px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 4000;
     }
 
     nav a{
