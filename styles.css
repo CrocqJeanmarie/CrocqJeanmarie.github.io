@@ -1,10 +1,16 @@
-:root{
+:root {
     --btn-bg: #A595C6;
     --btn-text: white;
-    --btn-hover-bg: grey;
+    --btn-hover-bg: #777;
     --btn-transition: 0.3s;
     --fond-texte: #BFBEBE;
+    --texte: #333;
+    --bordure: #ddd;
 }
+
+/* =========================================================
+   RESET / BASE
+========================================================= */
 
 * {
     margin: 0;
@@ -12,16 +18,49 @@
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    padding-top: 100px;
+    font-family: Arial, sans-serif;
+    color: var(--texte);
+    background-color: white;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
 }
 
+p,
+li {
+    line-height: 1.7;
+}
 
-/**************************** Acceuil ********************/
+/* =========================================================
+   HEADER
+========================================================= */
 
-
-/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -33,10 +72,9 @@ header {
     display: flex;
     justify-content: center;
     padding: 0 40px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--bordure);
 }
 
-/* NAV */
 nav {
     width: 100%;
     max-width: 1200px;
@@ -45,26 +83,40 @@ nav {
     justify-content: space-between;
 }
 
-.menu-toggle{
-    display:none;
-}
+/* =========================================================
+   LOGO
+========================================================= */
 
-/* LOGO */
 .logo {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .logo img {
     max-height: 80px;
+    width: auto;
+    display: block;
 }
 
-/* NAVIGATION */
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+}
+
 .Navigation {
     display: flex;
     justify-content: flex-end;
 }
 
+.Navigation > ul,
 nav ul {
     display: flex;
     gap: 20px;
@@ -84,21 +136,22 @@ nav a {
     color: #333;
     font-size: 16px;
     padding: 8px 12px;
-    transition: 0.3s;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-nav a:hover {
-    color: #A595C6;
-}
-
+nav a:hover,
 nav a.active {
-    color: #A595C6;
+    color: var(--btn-bg);
 }
 
-/* DROPDOWN */
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
 .dropdown-toggle {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
     height: 100%;
 }
@@ -110,100 +163,85 @@ nav a.active {
 .dropdown-menu {
     display: none;
     position: absolute;
+    top: 100%;
     left: 0;
-    background-color: white;
-    min-width: 200px;
+    min-width: 210px;
     flex-direction: column;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-}
-.dropdown-menu li:first-child {
-    margin-top: 10px;
+    padding: 5px 0;
 }
 
 .dropdown-menu li {
     width: 100%;
 }
 
+.dropdown-menu li:first-child {
+    margin-top: 0;
+}
+
 .dropdown-menu a {
-    display: block;
-    padding: 10px;
+    display: flex;
+    width: 100%;
+    padding: 12px;
 }
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: flex;
+/* Desktop */
+@media (min-width: 1025px) {
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .Navigation {
+        display: flex;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
 }
 
-/* MAIN CONTENT */
-body {
-    padding-top: 100px;
-    font-family: Arial, sans-serif;
-}
+/* =========================================================
+   BOUTONS
+========================================================= */
 
-/* ACCUEIL */
-.acceuil {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.bougie {
-    width: 100%;
-    height: 70vh;
-    max-height: 600px;
-    min-height: 400px;
-    object-fit: cover;
-    opacity: 0.8;
-}
-
-.Titre {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    color: white;
-}
-
-
-.fond-camion {
-    width: 100%;
-    max-width:600px;
-    margin: 10px auto 0;
-    background-color: var(--btn-bg);
-    border-radius: 28px 28px 60% 28px;
-    overflow: hidden;
-    padding: 8px;
-}
-
-.camion-specifique {
-    width: 100%;
-    display: block;
-    border-radius: 28px 28px 60% 28px;
-}
-
-.Titre .btn-small {
-    width: auto;
-    align-self: center;
+.btn {
     display: inline-block;
+    padding: 16px 31px;
+    font-size: 17px;
+    text-decoration: none;
+    border-radius: 28px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    cursor: pointer;
+    transition:
+        background-color var(--btn-transition),
+        color var(--btn-transition),
+        transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-text);
+    transform: translateY(-1px);
 }
 
 .btn-small {
+    display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
     min-width: 150px;
     background-color: var(--btn-bg);
     color: var(--btn-text);
-    transition: background-color var(--btn-transition), color var(--btn-transition);
+    text-decoration: none;
+    transition: background-color var(--btn-transition);
 }
 
 .btn-small:hover {
@@ -211,12 +249,105 @@ body {
     color: var(--btn-text);
 }
 
-/* PRÉSENTATION */
+/* =========================================================
+   ACCUEIL
+========================================================= */
+
+.acceuil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bougie {
+    width: 100%;
+    height: calc(100vh - 100px);
+    min-height: 500px;
+    object-fit: cover;
+    opacity: 0.8;
+    display: block;
+}
+
+.Titre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    z-index: 2;
+}
+
+.Titre h1 {
+    font-size: 3rem;
+}
+
+.Titre .btn-small {
+    width: auto;
+    align-self: center;
+}
+
+.fond-camion {
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 0;
+    background-color: var(--btn-bg);
+    border-radius: 28px 28px 60% 28px;
+    padding: 8px;
+    overflow: visible;
+}
+
+.camion-specifique {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 28px 28px 60% 28px;
+    object-fit: contain;
+}
+
+
+@media (min-width: 1025px) and (max-height: 700px) {
+
+    .bougie {
+        min-height: 0;
+        height: calc(100vh - 100px);
+    }
+
+    .Titre {
+        top: 50%;
+        gap: 10px;
+    }
+
+    .Titre h1 {
+        font-size: 2.3rem;
+        line-height: 1.1;
+    }
+
+    .fond-camion {
+        max-width: 420px;
+        margin-top: 30px;
+        padding: 6px;
+    }
+}
+
+/* =========================================================
+   PRÉSENTATION ACCUEIL
+========================================================= */
+
 .presentation {
     display: flex;
     width: 80%;
     max-width: 1200px;
-    height: 350px;
+    min-height: 350px;
     margin: 50px auto;
     gap: 20px;
 }
@@ -228,21 +359,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px 0 0 5px;
-    border-bottom-right-radius: 30%;
-    padding: 0 10px;
+    border-radius: 5px 0 30% 5px;
+    padding: 20px;
 }
 
 .presentation-titre h2 {
     color: white;
+    text-align: center;
 }
 
 .presentation-texte {
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 40px;
+    padding: 20px 40px;
     gap: 20px;
 }
 
@@ -256,47 +387,17 @@ body {
     justify-content: center;
 }
 
-/* PRESTATIONS */
+/* =========================================================
+   PRESTATIONS
+========================================================= */
+
 .prestations {
     display: flex;
     width: 80%;
-    height: 350px;
     max-width: 1200px;
+    min-height: 350px;
     margin: 50px auto;
     gap: 20px;
-}
-
-.prestations-items {
-    width: 90%;
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: stretch;
-    margin: 0 auto;
-}
-
-.prestation-item {
-    flex: 1;
-    padding: 20px;
-}
-
-.prestation-item img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-}
-
-.prestation-item p {
-    font-size: 30px;
-    color: #333;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    font-family: 'Dancing Script', cursive;
-}
-
-.prestation-item a{
-    margin-bottom: 10px;
 }
 
 .prestations-titre {
@@ -305,37 +406,64 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--fond-texte);
-    border-radius: 5px;
-    border-radius: 5px 0 0 5px;
-    border-top-left-radius: 30%;
+    border-radius: 5px 0 0 30%;
 }
 
 .prestations-titre h2 {
     color: white;
     padding: 20px;
+    text-align: center;
 }
 
-/* BOUTONS COMMUNS */
-.btn {
-    display: inline-block;
-    padding: 16px 31px;
-    font-size: 17px;
-    text-decoration: none;
-    border-radius: 28px;
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    cursor: pointer;
-    transition: background-color var(--btn-transition), color var(--btn-transition);
+.prestations-items {
+    width: 80%;
+    display: flex;
+    gap: 20px;
 }
 
-.btn:hover {
-    background-color: var(--btn-hover-bg);
-    color: var(--btn-text);
-}
 
-/* FOOTER */
-footer {
+.prestation-item {
+    flex: 1;
     padding: 20px;
+    align-items: self-start;
+    text-align: center;
+}
+
+
+.prestation-item img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.prestation-item img.thanatopraxieitem {
+    width: 80%;
+}
+
+.prestation-item p {
+    font-size: 30px;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    min-height: 102px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Dancing Script', cursive;
+}
+
+.prestation-item a {
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 25px 20px;
     background-color: black;
     color: white;
     text-align: center;
@@ -346,7 +474,11 @@ footer .footer-content {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
+}
+
+footer .footer-content p {
+    margin: 0;
 }
 
 .mention-legales {
@@ -358,7 +490,12 @@ footer .footer-content {
     color: var(--btn-bg);
 }
 
-/* Social button */
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .facebook-btn {
     width: 40px;
     height: 40px;
@@ -378,9 +515,55 @@ footer .footer-content {
     transform: scale(1.05);
 }
 
-/****************************Transport specifique***********************/
+/*******************************
+ * HAUT DE PAGE - VERSION CORRIGÉE
+ *******************************/
 
-.transportspe{
+.haut-de-page {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bougie2 {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0.6;
+}
+
+.haut-de-page h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    margin: 0;
+
+    color: white;
+    text-align: center;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 52px;
+    line-height: 1.2;
+
+    text-shadow:
+        1px 1px 2px black,
+        -1px -1px 2px black,
+        1px -1px 2px black,
+        -1px 1px 2px black;
+
+    z-index: 2;
+}
+
+/* =========================================================
+   TRANSPORT SPÉCIFIQUE
+========================================================= */
+
+.transportspe {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -390,25 +573,18 @@ footer .footer-content {
 .descriptioncrafter {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-.descriptioncrafter > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 50px;
 }
 
 .descriptioncrafter > div:first-child {
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
 }
 
 .descriptioncrafter > div:last-child {
@@ -416,13 +592,6 @@ footer .footer-content {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.cerceuil {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0 0 0 50%;
 }
 
 .textecrafter {
@@ -433,19 +602,33 @@ footer .footer-content {
     gap: 20px;
 }
 
-.textecrafter h2{
+.textecrafter h2 {
     align-self: center;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.textecrafter p {
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.cerceuil {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0 0 0 50%;
 }
 
 .separateur-texte {
     width: 30%;
-    display: flex;
-    justify-content: center;
+    display: block;
     margin: 20px auto;
 }
 
-/* Carrousel */
+/* =========================================================
+   CARROUSEL
+========================================================= */
 
 .galerie {
     width: 100%;
@@ -475,111 +658,6 @@ footer .footer-content {
 .slide {
     flex: 0 0 100%;
     width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Images */
-.slide img {
-    max-width: 90%;
-    max-height: 90%;
-    width: auto;
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 15px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-
-    cursor: zoom-in;
-}
-
-/* Boutons */
-.carousel button {
-    position: absolute;
-
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 45px;
-    height: 45px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: rgba(165,149,198,0.9);
-
-    color: white;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    transition: background-color 0.3s;
-}
-
-.carousel button:hover {
-    background-color: #A595C6;
-}
-
-/* Bouton précédent */
-#prev {
-    left: -70px;
-}
-
-/* Bouton suivant */
-#next {
-    right: -70px;
-}
-
-/* Points */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-top: 15px;
-}
-
-.carousel-dots .dot {
-    width: 12px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background-color: #ccc;
-
-    cursor: pointer;
-
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.carousel-dots .dot.active {
-    background-color: #A595C6;
-    transform: scale(1.2);
-}
-
-/* Conteneur des slides */
-.carousel-inner {
-    display: flex;
-    width: 100%;
-    height: 550px;
-    overflow: hidden;
-    transition: transform 0.5s ease-in-out;
-}
-
-
-/* Chaque slide */
-.slide {
-    flex: 0 0 100%;
-    width: 100%;
     min-width: 100%;
     height: 100%;
     display: flex;
@@ -594,39 +672,69 @@ footer .footer-content {
     height: auto;
     object-fit: contain;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     cursor: zoom-in;
 }
 
-/* Style des dots de navigation */
+.carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(165, 149, 198, 0.9);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.carousel button:hover {
+    background-color: var(--btn-bg);
+}
+
+#prev {
+    left: -70px;
+}
+
+#next {
+    right: -70px;
+}
+
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .carousel-dots .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5); /* Gris clair */
-    transition: background-color 0.3s;
+    background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .carousel-dots .dot.active {
-    background-color: #A595C6; /* Couleur de l'élément actif */
+    background-color: var(--btn-bg);
+    transform: scale(1.2);
 }
 
-/* LIGHTBOX */
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
 .lightbox {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -642,28 +750,30 @@ footer .footer-content {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 30px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
     cursor: pointer;
 }
 
 .lightbox button:hover {
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
 }
 
-.lightbox .prev { left: 20px; }
-.lightbox .next { right: 20px; }
+.lightbox .prev {
+    left: 20px;
+}
+
+.lightbox .next {
+    right: 20px;
+}
 
 .lightbox .close {
     position: absolute;
@@ -674,8 +784,9 @@ footer .footer-content {
     cursor: pointer;
 }
 
-
-/****************************Transport Classique***********************/
+/* =========================================================
+   TRANSPORT CLASSIQUE
+========================================================= */
 
 .transportclassique {
     display: flex;
@@ -684,19 +795,20 @@ footer .footer-content {
     width: 100%;
 }
 
-.vehiculepresentation{
+.vehiculepresentation {
     width: 80%;
+    max-width: 1200px;
 }
 
-.peugvolk{
+.peugvolk {
     display: flex;
     flex-direction: row;
-    margin: 30px;
-    gap: 10%;
+    margin: 40px 0;
+    gap: 60px;
 }
 
-
-.peugexpert{
+.peugexpert,
+.volktransporteur {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -704,34 +816,17 @@ footer .footer-content {
     gap: 20px;
 }
 
-.peugexpert p{
-    line-height: 2;
+.peugexpert p,
+.volktransporteur p,
+.peugexpert li,
+.volktransporteur li {
+    line-height: 1.8;
 }
 
-.peugexpert li{
-    line-height: 2;
+.map-section {
+    width: 100%;
+    margin: 40px 0;
 }
-
-.volktransporteur{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.volktransporteur p{
-    line-height: 2;
-}
-
-.volktransporteur li{
-    line-height: 2;
-}
-
-.map-section{
-    margin: 30px 0;
-}
-
 
 .map {
     display: flex;
@@ -748,11 +843,11 @@ footer .footer-content {
     border: 0;
 }
 
-.dimension{
+.dimension {
     text-decoration: underline;
 }
 
-.imagecamion{
+.imagecamion {
     display: flex;
     gap: 30px;
 }
@@ -766,29 +861,30 @@ footer .footer-content {
 }
 
 .imagecamion img:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
     cursor: zoom-in;
 }
 
-
-
-
-/****************************Thanatopraxie***********************/
+/* =========================================================
+   THANATOPRAXIE
+========================================================= */
 
 .texte-thanato {
     width: 80%;
+    max-width: 1200px;
     margin: 50px auto;
 }
 
 .texte {
     display: flex;
-    align-items: center;
-    justify-content: top;
+    align-items: flex-start;
+    justify-content: center;
     gap: 60px;
 }
 
 .texte > div:first-child {
     flex: 2;
+    min-width: 0;
 }
 
 .images-thanato {
@@ -814,10 +910,16 @@ footer .footer-content {
 
 .texte h2 {
     margin-bottom: 30px;
+    text-align: center;
 }
 
-.experience-thanato{
+.experience {
+    width: 100%;
+}
+
+.experience-thanato {
     width: 80%;
+    max-width: 1000px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
@@ -825,17 +927,24 @@ footer .footer-content {
     gap: 20px;
 }
 
-/****************************Presentation***********************/
+.experience-thanato p {
+    text-align: justify;
+}
 
-.presentation-quisuisje{
+/* =========================================================
+   PRÉSENTATION
+========================================================= */
+
+.presentation-quisuisje {
     width: 80%;
+    max-width: 1200px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.quisuisje{
+.quisuisje {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -853,7 +962,7 @@ footer .footer-content {
     margin: 50px auto;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .photo-presentation img {
@@ -865,7 +974,9 @@ footer .footer-content {
     display: block;
 }
 
-/****************************Mentions légales******************************/
+/* =========================================================
+   MENTIONS LÉGALES
+========================================================= */
 
 .mention-legal-texte {
     width: 80%;
@@ -889,52 +1000,9 @@ footer .footer-content {
     color: #333;
 }
 
-
-
-
-
-/****************************Haut de page***********************/
-
-.haut-de-page{
-    position: relative;
-    width: 100%;
-}
-
-.haut-de-page h1{
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    color: white;
-    font-size: 52px;
-    font-family: 'Dancing Script', handwriting;
-    text-shadow: 
-        1px 1px 2px black,
-        -1px -1px 2px black,
-        1px -1px 2px black,
-        -1px 1px 2px black;
-}
-
-.bougie2 {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    opacity: 0.6;
-    display: block;
-}
-
-.mention-legal-texte{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-
-
-
-/********************************* CONTACT ******************************/
-
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact-container {
     display: flex;
@@ -945,7 +1013,6 @@ footer .footer-content {
     align-items: flex-start;
 }
 
-        /* FORMULAIRE */
 .formulaire {
     flex: 2;
     min-width: 0;
@@ -959,19 +1026,16 @@ footer .footer-content {
     margin-bottom: 20px;
 }
 
-
 .formulaire form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-
 .ligne {
     display: flex;
     gap: 20px;
 }
-
 
 .champ {
     display: flex;
@@ -979,8 +1043,8 @@ footer .footer-content {
     flex: 1;
 }
 
-/* Inputs */
-input, textarea {
+input,
+textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -989,15 +1053,19 @@ input, textarea {
     background-color: #e6e6e6;
 }
 
-/* Message */
-textarea {
-    min-height: 120px;
-    resize: none;
+input:focus,
+textarea:focus {
+    outline: 2px solid rgba(165, 149, 198, 0.35);
+    border-color: var(--btn-bg);
 }
 
-/* Bouton */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
 .formulaire button {
-    background-color: #A595C6;
+    background-color: var(--btn-bg);
     color: white;
     padding: 12px;
     border: none;
@@ -1007,8 +1075,7 @@ textarea {
     width: 30%;
 }
 
-
-button:hover {
+.formulaire button:hover {
     background-color: grey;
 }
 
@@ -1017,73 +1084,6 @@ button:hover {
     color: green;
     margin-top: 10px;
 }
-
-/* INFOS */
-.information {
-    flex: 1;
-    min-width: 0;
-    background-color: #f5f5f5;
-    padding: 25px;
-    border-radius: 10px;
-    border-left: 4px solid #A595C6;
-    overflow-wrap: break-word;
-}
-
-.information h3 {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 2rem;
-}
-
-.information a {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    text-decoration: none;
-}
-
-.information a:hover {
-    color: #A595C6;
-}
-
-/* Ligne icone + texte */
-.info-ligne {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-    min-width: 0;
-}
-
-.info-ligne > div {
-    min-width: 0;
-}
-
-.info-ligne a {
-    overflow-wrap: anywhere;
-}
-
-/* Icônes */
-.info-ligne img {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-/* Texte à côté */
-.info-ligne a,
-.info-ligne p,
-.info-ligne address {
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* Adresse bloc */
-.info-ligne address {
-    font-style: normal;
-}
-
-/* Message erreur */
 
 .success-message {
     display: none;
@@ -1103,135 +1103,605 @@ button:hover {
     margin-bottom: 10px;
 }
 
-/************************** RESPONSIVE **********************************/
+.information {
+    flex: 1;
+    min-width: 0;
+    background-color: #f5f5f5;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--btn-bg);
+    overflow-wrap: break-word;
+}
 
+.information h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
 
-@media (max-width: 768px) {
-    /************************* General ************************/
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Dancing Script', cursive;
-        font-size: 2rem;
-    }
+.information h3:first-child {
+    margin-top: 0;
+}
 
-    header {
-        position: relative;
-        height: 70px;
-        padding: 10px 20px;
-        z-index: 3000;
-    }
+.information a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.information a:hover {
+    color: var(--btn-bg);
+}
+
+.info-ligne {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    min-width: 0;
+}
+
+.info-ligne > div {
+    min-width: 0;
+}
+
+.info-ligne a {
+    overflow-wrap: anywhere;
+}
+
+.info-ligne img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.info-ligne a,
+.info-ligne p,
+.info-ligne address {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.info-ligne address {
+    font-style: normal;
+}
+
+/* =========================================================
+   TABLETTE
+   769px -> 1024px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
 
     body {
-        padding-top: 0;
-        background-color: white;
+        padding-top: 85px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 2.2rem;
+    }
+
+    /* HEADER */
+
+    header {
+        height: 85px;
+        padding: 0 25px;
     }
 
     nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 15px;
-        flex-wrap: nowrap;
+        max-width: 100%;
     }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        min-width: 0;
+    .logo img {
+        max-height: 60px;
     }
 
-    .logo img{
-        max-height:40px;
-        width: auto;
-    }
-
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:10px;
-    }
+    /* HAMBURGER */
 
     .menu-toggle {
         display: block;
-        flex-shrink: 0;
-        border: none;
-        background-color: transparent;
-        color: #333;
-        font-size: 35px;
+        font-size: 34px;
         line-height: 1;
-        cursor: pointer;
-        padding: 5px;
-        z-index: 4000;
-    }
-
-    nav a{
-        font-size:15px;
-        padding:8px;
-    }
-
-    .menu-toggle{
-        display: block;
-        border: none;
-        background-color: transparent;
-        color: #333;
-        font-size: 35px;
-        line-height: 1;
-        cursor: pointer;
         padding: 5px;
         z-index: 4000;
     }
 
     .menu-toggle:hover {
         background-color: transparent;
-        color: #A595C6;
+        color: var(--btn-bg);
     }
 
-    .Navigation{
-        display:none;
-        width:100%;
-    }
+    /* MENU */
 
-    .Navigation.active{
-        display:block;
+    .Navigation {
+        display: none;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
         background-color: white;
+        z-index: 3000;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .Navigation.active {
+        display: block;
+    }
+
+    .Navigation > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .Navigation li {
+        width: 100%;
+    }
+
+    .Navigation a {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+    }
+
+    /* SOUS MENU */
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: static;
+        width: 100%;
+        min-width: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: #fafafa;
+        padding: 0;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: flex;
+    }
+
+    .dropdown-menu a {
+        padding: 14px;
+    }
+
+    /* HAUT DE PAGE */
+
+    .bougie2 {
+        height: 220px;
+    }
+
+    .haut-de-page h1 {
+        font-size: 44px;
+        left: 50%;
+    }
+
+    /* ACCUEIL */
+
+    .bougie {
+        height: calc(100vh - 85px);
+        min-height: 450px;
+        max-height: 650px;
+    }
+
+    .Titre {
+        width: 85%;
+    }
+
+    .Titre h1 {
+        font-size: 2.7rem;
+    }
+
+    /* PRÉSENTATION */
+
+    .presentation {
+        width: 90%;
+        max-width: 900px;
+        min-height: 350px;
+    }
+
+    .presentation-titre {
+        width: 35%;
+    }
+
+    .presentation-texte {
+        width: 65%;
+        padding: 20px 25px;
+    }
+
+    .presentation-texte p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    /* PRESTATIONS */
+
+    .prestations {
+        width: 90%;
+        max-width: 900px;
+        min-height: 320px;
+    }
+
+    .prestations-titre {
+        width: 30%;
+    }
+
+    .prestations-items {
+        width: 70%;
+        gap: 10px;
+    }
+
+    .prestation-item {
+        padding: 10px;
+    }
+
+    .prestation-item img {
+        height: 150px;
+        max-height: 150px;
+    }
+
+    .prestation-item p {
+        font-size: 22px;
+    }
+
+    .prestation-item .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    /* TRANSPORT SPÉCIFIQUE */
+
+    .descriptioncrafter {
+        width: 90%;
+        max-width: 900px;
+        gap: 30px;
+    }
+
+    .descriptioncrafter > div:first-child {
+        width: 55%;
+    }
+
+    .descriptioncrafter > div:last-child {
+        width: 45%;
+    }
+
+    .textecrafter {
+        gap: 15px;
+    }
+
+    .textecrafter h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .textecrafter p {
+        line-height: 1.7;
+    }
+
+    /* CARROUSEL */
+
+    .carousel {
+        width: 88%;
+        max-width: 850px;
+    }
+
+    .carousel-inner {
+        height: 450px;
+    }
+
+    .slide img {
+        max-width: 85%;
+        max-height: 85%;
+    }
+
+    #prev {
+        left: -5px;
+    }
+
+    #next {
+        right: -5px;
+    }
+
+    /* TRANSPORT CLASSIQUE */
+
+    .vehiculepresentation {
+        width: 90%;
+        max-width: 900px;
+    }
+
+    .peugvolk {
+        gap: 30px;
+        margin: 30px 0;
+    }
+
+    .peugexpert,
+    .volktransporteur {
+        gap: 15px;
+    }
+
+    .peugexpert p,
+    .volktransporteur p,
+    .peugexpert li,
+    .volktransporteur li {
+        line-height: 1.7;
+    }
+
+    .imagecamion {
+        gap: 15px;
+    }
+
+    /* THANATOPRAXIE */
+
+    .texte-thanato {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+
+    .texte {
+        gap: 30px;
+    }
+
+    .texte > div:first-child {
+        flex: 1.8;
+    }
+
+    .images-thanato {
+        flex: 1;
+    }
+
+    .texte p {
+        line-height: 1.7;
+    }
+
+    .images-thanato img {
+        max-width: 280px;
+    }
+
+    .experience-thanato {
+        width: 90%;
+        max-width: 900px;
+    }
+
+    /* PRÉSENTATION */
+
+    .presentation-quisuisje {
+        width: 90%;
+        max-width: 900px;
+    }
+
+    .photo-presentation {
+        width: 90%;
+        max-width: 900px;
+    }
+
+    /* MENTIONS */
+
+    .mention-legal-texte {
+        width: 90%;
+        max-width: 900px;
+    }
+
+    /* CONTACT */
+
+    .contact-container {
+        width: 90%;
+        max-width: 900px;
+        gap: 25px;
+        margin: 40px auto;
+    }
+
+    .formulaire {
+        flex: 1.5;
+    }
+
+    .information {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .ligne {
+        gap: 15px;
+    }
+
+    .formulaire button {
+        width: 40%;
+    }
+
+    input,
+    textarea {
+        font-size: 15px;
+    }
+
+    /* FOOTER */
+
+    footer .footer-content {
+        gap: 25px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   0px -> 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       BASE
+    ===================================================== */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        padding-top: 0;
+        font-size: 16px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2rem;
+    }
+
+    p,
+    li {
+        line-height: 1.65;
+    }
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    header {
+        position: relative;
+        height: 70px;
+        padding: 10px 15px;
+    }
+
+    nav {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .logo {
+        min-width: 0;
+        max-width: calc(100% - 60px);
+    }
+
+    .logo img {
+        max-height: 42px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    /* =====================================================
+       HAMBURGER
+    ===================================================== */
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 45px;
+        height: 45px;
+        border: none;
+        background: transparent;
+        color: #333;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .menu-toggle:hover {
+        background-color: transparent;
+        color: var(--btn-bg);
+    }
+
+    /* =====================================================
+       MENU MOBILE
+    ===================================================== */
+
+    .Navigation {
+        display: none;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
+        background-color: white;
         z-index: 2000;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .Navigation ul{
-        display:flex;
-        flex-direction:column;
-        width:100%;
+    .Navigation.active {
+        display: block;
     }
 
-    .Navigation li{
-        width:100%;
+    .Navigation > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
     }
 
-    .Navigation a{
-        justify-content:center;
-        padding:12px;
-        border-top:1px solid #ddd;
+    .Navigation li {
+        width: 100%;
     }
+
+    .Navigation a {
+        display: flex;
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 15px;
+        border-top: 1px solid #ddd;
+        text-align: center;
+    }
+
+    /* =====================================================
+       DROPDOWN MOBILE
+    ===================================================== */
 
     .dropdown {
-        display: block;
+        width: 100%;
         margin: 0;
-        padding:0;
+        padding: 0;
     }
 
+    .dropdown > .dropdown-toggle {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 15px;
+        cursor: pointer;
+    }
 
     .dropdown-menu {
         display: none;
         position: static;
         flex-direction: column;
         width: 100%;
-        background-color: white;
-        box-shadow: none;
+        min-width: 0;
         margin: 0;
-        border-top:none;
+        padding: 0;
+        background-color: #fafafa;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: flex;
     }
 
     .dropdown-menu li {
@@ -1239,46 +1709,576 @@ button:hover {
     }
 
     .dropdown-menu a {
+        width: 100%;
+        min-height: 45px;
         padding: 12px;
+        justify-content: center;
         text-align: center;
         border-top: 1px solid #ddd;
-        justify-content: center;
-    }
-
-    .dropdown > .dropdown-toggle {
-        display: none;
-        margin: 0;
-        padding:0;
     }
 
     .dropdown-menu li:first-child {
         margin-top: 0;
     }
 
-    .dropdown.active .dropdown-menu {
-        display:flex;
-    }
+    /* =====================================================
+       HAUT DE PAGE
+    ===================================================== */
 
-    .bougie {
-        height: 60vh;
-        min-height: 500px;
-        max-height: 700px;
+    .bougie2 {
+        height: 180px;
+        min-height: 180px;
+        object-fit: cover;
     }
 
     .haut-de-page h1 {
-        width: 100%;
-        left: 0;
+        width: 90%;
+        left: 50%;
         top: 50%;
-        transform: translateY(-50%);
-        text-align: center;
-        font-size: 32px;
+        transform: translate(-50%, -50%);
+        font-size: 34px;
         line-height: 1.2;
     }
 
+    /* =====================================================
+       ACCUEIL
+    ===================================================== */
+
+    .acceuil {
+        min-height: 0;
+    }
+
+    .bougie {
+        width: 100%;
+        height: 70vh;
+        min-height: 480px;
+        max-height: 700px;
+        object-fit: cover;
+    }
+
+    .Titre {
+        width: 92%;
+        top: 55%;
+        gap: 15px;
+    }
+
+    .Titre h1 {
+        font-size: 2.1rem;
+        line-height: 1.25;
+    }
+
+    .Titre p {
+        font-size: 15px;
+    }
+
+    .fond-camion {
+        width: 95%;
+        max-width: 450px;
+        padding: 6px;
+        border-radius: 22px 22px 50% 22px;
+    }
+
+    .camion-specifique {
+        border-radius: 22px 22px 50% 22px;
+    }
+
+    .Titre .btn-small {
+        min-width: 140px;
+        padding: 10px 18px;
+    }
+
+    /* =====================================================
+       PRÉSENTATION ACCUEIL
+    ===================================================== */
+
+    .presentation {
+        flex-direction: column;
+        width: 90%;
+        min-height: 0;
+        height: auto;
+        margin: 40px auto;
+        gap: 0;
+    }
+
+    .presentation-titre,
+    .presentation-texte {
+        width: 100%;
+    }
+
+    .presentation-titre {
+        min-height: 100px;
+        padding: 20px;
+        border-radius: 5px 5px 30% 5px;
+    }
+
+    .presentation-titre h2 {
+        font-size: 2.1rem;
+    }
+
+    .presentation-texte {
+        padding: 25px 5px;
+        gap: 15px;
+    }
+
+    .presentation-texte p {
+        font-size: 16px;
+        line-height: 1.65;
+        text-align: justify;
+    }
+
+    /* =====================================================
+       PRESTATIONS
+    ===================================================== */
+
+    .prestations {
+        flex-direction: column-reverse;
+        width: 90%;
+        min-height: 0;
+        height: auto;
+        margin: 40px auto;
+        gap: 25px;
+    }
+
+    .prestations-titre {
+        width: 100%;
+        min-height: 100px;
+        border-radius: 30% 5px 5px 5px;
+    }
+
+    .prestations-titre h2 {
+        font-size: 2.1rem;
+    }
+
+    .prestations-items {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .prestation-item {
+        width: 100%;
+        max-width: 420px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .prestation-item img {
+        width: 80%;
+        height: 180px;
+        max-height: 180px;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+
+    .prestation-item img.thanatopraxieitem {
+        width: 65%;
+    }
+
+    .prestation-item p {
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        margin: 10px 0;
+        min-height: 58px;
+    }
+
+    .prestation-item .btn {
+        padding: 11px 18px;
+        font-size: 15px;
+    }
+
+    /* =====================================================
+       TRANSPORT SPÉCIFIQUE
+    ===================================================== */
+
+    .descriptioncrafter {
+        flex-direction: column;
+        width: 90%;
+        margin: 35px auto;
+        gap: 30px;
+    }
+
+    .descriptioncrafter > div:first-child,
+    .descriptioncrafter > div:last-child {
+        width: 100%;
+    }
+
+    .textecrafter {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .textecrafter h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .textecrafter p {
+        line-height: 1.65;
+        text-align: justify;
+    }
+
+    .cerceuil {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 0 0 0 30%;
+    }
+
+    /* =====================================================
+       SÉPARATEUR
+    ===================================================== */
 
     .separateur-texte {
-        width: 30%;
-        margin: 20px auto;
+        width: 40%;
+        max-width: 180px;
+        height: auto;
+        margin: 25px auto;
+    }
+
+    .separateurexperience {
+        width: 60%;
+        max-width: 220px;
+    }
+
+    /* =====================================================
+       CARROUSEL
+    ===================================================== */
+
+    .carousel {
+        width: 95%;
+        margin: 35px auto;
+    }
+
+    .carousel-inner {
+        height: 280px;
+    }
+
+    .slide img {
+        max-width: 82%;
+        max-height: 82%;
+    }
+
+    .carousel button {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    #prev {
+        left: 5px;
+    }
+
+    #next {
+        right: 5px;
+    }
+
+    .carousel-dots {
+        gap: 7px;
+        margin-top: 12px;
+    }
+
+    .carousel-dots .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    .lightbox img {
+        max-width: 92%;
+        max-height: 80%;
+    }
+
+    .lightbox button {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .lightbox .prev {
+        left: 8px;
+    }
+
+    .lightbox .next {
+        right: 8px;
+    }
+
+    .lightbox .close {
+        top: 10px;
+        right: 15px;
+        font-size: 35px;
+    }
+
+    /* =====================================================
+       TRANSPORT CLASSIQUE
+    ===================================================== */
+
+    .vehiculepresentation {
+        width: 90%;
+    }
+
+    .peugvolk {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        margin: 35px 0;
+    }
+
+    .peugexpert,
+    .volktransporteur {
+        width: 100%;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .peugexpert p,
+    .volktransporteur p,
+    .peugexpert li,
+    .volktransporteur li {
+        line-height: 1.65;
+    }
+
+    .imagecamion {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .imagecamion img {
+        width: 100%;
+    }
+
+    .imagecamion img:hover {
+        transform: none;
+    }
+
+    .map-section {
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    .map {
+        width: 100%;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 350px;
+    }
+
+    /* =====================================================
+       THANATOPRAXIE
+    ===================================================== */
+
+    .texte-thanato {
+        width: 90%;
+        margin: 35px auto;
+    }
+
+    .texte {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .texte > div:first-child {
+        width: 100%;
+        flex: none;
+    }
+
+    .texte h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .texte p {
+        margin: 15px 0;
+        line-height: 1.65;
+        text-align: justify;
+    }
+
+    .images-thanato {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .images-thanato img {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .experience {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .experience-thanato {
+        width: 100%;
+        margin: 30px auto 45px;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .experience-thanato p {
+        text-align: justify;
+        line-height: 1.65;
+    }
+
+    /* =====================================================
+       PRÉSENTATION
+    ===================================================== */
+
+    .presentation-quisuisje {
+        width: 90%;
+        margin: 35px auto;
+        gap: 20px;
+    }
+
+    .quisuisje h2 {
+        text-align: center;
+    }
+
+    .texte-quisuisje p {
+        margin: 15px 0;
+        line-height: 1.65;
+        text-align: justify;
+    }
+
+    .photo-presentation {
+        width: 90%;
+        margin: 35px auto;
+    }
+
+    .photo-presentation img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* =====================================================
+       MENTIONS LÉGALES
+    ===================================================== */
+
+    .mention-legal-texte {
+        width: 90%;
+        margin: 35px auto;
+        gap: 30px;
+    }
+
+    .mention-legal-texte h2 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .mention-legal-texte p {
+        margin-bottom: 10px;
+        line-height: 1.65;
+        text-align: justify;
+        overflow-wrap: anywhere;
+    }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 35px auto;
+        gap: 30px;
+    }
+
+    .formulaire,
+    .information {
+        width: 100%;
+        flex: none;
+    }
+
+    .formulaire h2 {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .formulaire > p {
+        text-align: justify;
+    }
+
+    .formulaire form {
+        gap: 15px;
+    }
+
+    .ligne {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .champ {
+        width: 100%;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .formulaire button {
+        width: 65%;
+        max-width: 250px;
+        align-self: center;
+        padding: 13px 20px;
+        font-size: 16px;
+    }
+
+    .information {
+        padding: 22px;
+    }
+
+    .information h3 {
+        font-size: 1.9rem;
+    }
+
+    .info-ligne {
+        align-items: flex-start;
+    }
+
+    .info-ligne a,
+    .info-ligne p,
+    .info-ligne address {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+        padding: 25px 15px;
     }
 
     footer .footer-content {
@@ -1294,266 +2294,275 @@ button:hover {
         margin: 5px auto;
     }
 
+    .social {
+        margin-top: 5px;
+    }
+}
 
+/* =========================================================
+   PETITS MOBILES
+   0px -> 480px
+========================================================= */
 
-    /************************* Acceuil ************************/
-    .Titre{
-        width:90%;
-        top: 60%;
+@media (max-width: 480px) {
+
+    body {
+        font-size: 15px;
     }
 
-    .Titre h1{
-        font-size:2rem;
-    }
-    .presentation{
-        flex-direction:column;
-        height:auto;
-        width:90%;
-        margin: 50px auto;
+    /* HEADER */
+
+    header {
+        height: 65px;
+        padding: 8px 12px;
     }
 
-    .presentation-titre,
-    .presentation-texte{
-        width:100%;
+    .logo img {
+        max-height: 38px;
     }
 
-    .presentation-texte{
-        padding: 20px;
-        min-height: 180px;
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+        font-size: 30px;
     }
 
-    .presentation-titre{
-        min-height: 100px;
+    .Navigation {
+        top: 65px;
     }
 
-    .presentation-titre h2 {
-        font-size: 2.2rem;
+    /* HAUT DE PAGE */
+
+    .bougie2 {
+        height: 150px;
+        min-height: 150px;
     }
 
-    .presentation-texte p {
-        font-size: 16px;
-        line-height: 1.6;
+    .haut-de-page h1 {
+        font-size: 30px;
     }
 
-    .prestations{
-        flex-direction:column-reverse;
-        height:auto;
-        width:90%;
+    /* ACCUEIL */
+
+    .bougie {
+        height: 65vh;
+        min-height: 450px;
     }
 
-    .prestations-titre{
-        width:100%;
-        min-height: 100px;
+    .Titre {
+        width: 94%;
     }
 
-    .prestations-items{
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+    .Titre h1 {
+        font-size: 1.8rem;
     }
 
-    .prestation-item{
-        width: 90%;
-        max-width: 420px;
-        margin: auto;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .prestation-item img{
-        width: 80%;
-        max-height: 180px;
-        margin: 0 auto;
-        object-fit: contain;
-    }
-
-    .prestation-item p{
-        width: 100%;
-        text-align: center;
-        font-size: 22px;
-        margin: 8px 0;
-    }
-
-    .prestation-item .btn{
-        padding: 10px 18px;
+    .Titre p {
         font-size: 14px;
     }
 
-    .prestation-item a{
-        display: inline-block;
-        margin: 10px auto;
-    }
-
-
-
-
-    /************************* Transport spécifique ************************/
-    .descriptioncrafter {
-        flex-direction: column;
-        width: 90%;
-        margin: 30px auto;
-        gap: 30px;
-    }
-
-    .descriptioncrafter > div:first-child {
-        width: 100%;
-        align-items: center;
-    }
-
-    .descriptioncrafter > div:last-child {
+    .fond-camion {
         width: 100%;
     }
 
-    .textecrafter {
-        width: 100%;
-        gap: 15px;
+    /* TITRES */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1.8rem;
     }
 
-    .textecrafter h2 {
-        text-align: center;
-        margin-bottom: 10px;
+    /* CONTENU */
+
+    .presentation,
+    .prestations,
+    .descriptioncrafter,
+    .texte-thanato,
+    .presentation-quisuisje,
+    .photo-presentation,
+    .mention-legal-texte,
+    .contact-container,
+    .experience {
+        width: 92%;
     }
 
-    .textecrafter p {
-        text-align: justify;
-        line-height: 1.6;
+    .presentation-texte {
+        padding: 20px 0;
     }
 
-    .cerceuil {
-        width: 100%;
-        border-radius: 0 0 0 30%;
-    }
-
-
-    .contact-container {
-        flex-direction: column;
-    }
-
-    .ligne {
-        flex-direction: column;
-    }
+    /* CARROUSEL */
 
     .carousel {
-        width: 95%;
-        margin: 40px auto;
+        width: 100%;
     }
 
     .carousel-inner {
-        height: 250px;
-    }
-
-    .carousel button {
-        width: 35px;
-        height: 35px;
-
-        font-size: 18px;
-    }
-
-    #prev {
-        left: 8px;
-    }
-
-    #next {
-        right: 8px;
+        height: 230px;
     }
 
     .slide img {
-        max-width: 85%;
-        max-height: 85%;
-    }
-
-
-    /************************* Transport classique ************************/
-
-    .vehiculepresentation{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .peugvolk{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .imagecamion{
-        display: flex;
-        flex-direction: column;
-    }
-
-    /************************* Thanato ************************/
-
-    .texte-thanato {
-        width: 90%;
-        margin: 30px auto;
-    }
-
-    .texte {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .texte > div:first-child {
-        width: 100%;
-        flex: none;
-    }
-
-    
-    .texte h2 {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .texte p {
-        margin: 15px 0;
-        line-height: 1.6;
-        text-align: justify;
-    }
-
-    .images-thanato {
-        width: 100%;
-        flex: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-
-    .images-thanato{
-        width: 100%;
-        max-width: 350px;
-        height: auto;
-    }
-
-    /**************************presentation********************/
-    .photo-presentation {
-        width: 90%;
-        margin: 30px auto;
-    }
-
-    .photo-presentation img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
+        max-width: 78%;
+        max-height: 78%;
         border-radius: 10px;
     }
-    
 
-    /**************************contact********************/
+    .carousel button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    #prev {
+        left: 3px;
+    }
+
+    #next {
+        right: 3px;
+    }
+
+    /* MAP */
+
+    .map iframe {
+        height: 280px;
+    }
+
+    /* CONTACT */
+
+    .information {
+        padding: 18px;
+    }
 
     .formulaire button {
-        width: 60%;
-        align-self: center;
-        padding: 12px 20px;
-        white-space: nowrap;
+        width: 75%;
     }
-    
+
+    /* FOOTER */
+
+    footer {
+        padding: 20px 10px;
+    }
+
+    footer .footer-content {
+        gap: 12px;
+    }
+}
+
+
+/*******************************
+ * TABLETTE
+ *******************************/
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .haut-de-page {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .bougie2 {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .haut-de-page h1 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 90%;
+        font-size: 44px;
+        line-height: 1.2;
+        text-align: center;
+    }
+}
+
+
+/*******************************
+ * MOBILE
+ *******************************/
+
+@media (max-width: 768px) {
+
+    .haut-de-page {
+        width: 100%;
+        min-height: 200px;
+        overflow: hidden;
+    }
+
+    .bougie2 {
+        display: block;
+        width: 100%;
+        height: 200px;
+
+        /*
+         * On garde une hauteur fixe mais raisonnable.
+         * L'image reste centrée et ne remonte plus.
+         */
+        object-fit: cover;
+        object-position: center center;
+
+        opacity: 0.6;
+    }
+
+    .haut-de-page h1 {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 90%;
+        margin: 0;
+
+        font-size: 34px;
+        line-height: 1.2;
+
+        text-align: center;
+        white-space: normal;
+    }
+}
+
+/* =========================================================
+   MENU TABLETTE ET MOBILE
+   Les transports deviennent deux liens directs.
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .dropdown > .dropdown-toggle {
+        display: none;
+    }
+
+    .dropdown-menu,
+    .dropdown.active .dropdown-menu {
+        display: flex;
+        position: static;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .dropdown-menu a {
+        display: flex;
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 15px;
+        border-top: 1px solid #ddd;
+        text-align: center;
+    }
 }

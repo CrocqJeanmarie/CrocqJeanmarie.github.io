@@ -1,15 +1,127 @@
 /**************************************************
- * MENU MOBILE
+ * MENU RESPONSIVE
  **************************************************/
 
 const bouton = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".Navigation");
+const dropdown = document.querySelector(".dropdown");
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+
+
+/*
+ * OUVERTURE / FERMETURE DU MENU PRINCIPAL
+ */
 
 if (bouton && menu) {
 
-    bouton.addEventListener("click", () => {
+    bouton.addEventListener("click", (e) => {
+
+        e.preventDefault();
+        e.stopPropagation();
 
         menu.classList.toggle("active");
+
+        // Si on ferme le menu principal,
+        // on ferme également le sous-menu
+        if (!menu.classList.contains("active") && dropdown) {
+            dropdown.classList.remove("active");
+        }
+
+    });
+
+}
+
+
+/*
+ * OUVERTURE / FERMETURE DU SOUS-MENU
+ *
+ * Transport funéraire
+ */
+
+if (dropdown && dropdownToggle) {
+
+    dropdownToggle.addEventListener("click", (e) => {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        dropdown.classList.toggle("active");
+
+    });
+
+}
+
+
+/*
+ * EMPÊCHE LE CLIC DANS LE MENU
+ * DE LE FERMER
+ */
+
+if (menu) {
+
+    menu.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+    });
+
+}
+
+
+/*
+ * CLIC EN DEHORS DU MENU
+ */
+
+document.addEventListener("click", (e) => {
+
+    if (!menu || !bouton) {
+        return;
+    }
+
+    // Si le clic est sur le bouton :
+    // on ne fait rien car le bouton possède déjà
+    // son propre événement
+    if (bouton.contains(e.target)) {
+        return;
+    }
+
+    // Si le clic est dans le menu :
+    // on ne ferme rien
+    if (menu.contains(e.target)) {
+        return;
+    }
+
+    // Sinon, on ferme tout
+    menu.classList.remove("active");
+
+    if (dropdown) {
+        dropdown.classList.remove("active");
+    }
+
+});
+
+
+/*
+ * LIENS DU SOUS-MENU
+ *
+ * IMPORTANT :
+ * On ne ferme PAS le menu avant la navigation.
+ */
+
+if (dropdown) {
+
+    const sousMenuLiens =
+        dropdown.querySelectorAll(".dropdown-menu a");
+
+    sousMenuLiens.forEach((lien) => {
+
+        lien.addEventListener("click", (e) => {
+
+            // Le lien doit pouvoir fonctionner normalement.
+            // On ne fait pas preventDefault().
+            // On laisse donc le navigateur suivre le href.
+
+        });
 
     });
 
