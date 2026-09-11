@@ -9,7 +9,7 @@
 }
 
 /* =========================================================
-   RESET / BASE
+   GENERAL
 ========================================================= */
 
 * {
@@ -516,7 +516,7 @@ footer .footer-content p {
 }
 
 /*******************************
- * HAUT DE PAGE - VERSION CORRIGÉE
+ * HAUT DE PAGE
  *******************************/
 
 .haut-de-page {
@@ -1290,8 +1290,19 @@ textarea {
     }
 
     .haut-de-page h1 {
-        font-size: 44px;
+        top: 50%;
         left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 90%;
+        font-size: 44px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .haut-de-page {
+        width: 100%;
+        min-height: 250px;
     }
 
     /* ACCUEIL */
@@ -1300,6 +1311,13 @@ textarea {
         height: calc(100vh - 85px);
         min-height: 450px;
         max-height: 650px;
+    }
+
+    .bougie2 {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center center;
     }
 
     .Titre {
@@ -1428,13 +1446,25 @@ textarea {
     }
 
     .peugvolk {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
         gap: 30px;
         margin: 30px 0;
     }
 
     .peugexpert,
     .volktransporteur {
+        flex: 1 1 0;
+        min-width: 0;
+        width: 50%;
         gap: 15px;
+        align-items: center;
+    }
+
+    .peugexpert h2,
+    .volktransporteur h2 {
+        text-align: center;
     }
 
     .peugexpert p,
@@ -1445,7 +1475,20 @@ textarea {
     }
 
     .imagecamion {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
         gap: 15px;
+    }
+
+    .imagecamion img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-width: 0;
+        object-fit: contain;
+        border-radius: 10px;
     }
 
     /* THANATOPRAXIE */
@@ -1725,19 +1768,36 @@ textarea {
        HAUT DE PAGE
     ===================================================== */
 
+
+
     .bougie2 {
-        height: 180px;
+        display: block;
         min-height: 180px;
+        width: 100%;
+        height: 200px;
         object-fit: cover;
+        object-position: center center;
+
+        opacity: 0.6;
+    }
+
+    .haut-de-page {
+        width: 100%;
+        min-height: 200px;
+        overflow: hidden;
     }
 
     .haut-de-page h1 {
-        width: 90%;
-        left: 50%;
+        position: absolute;
         top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        width: 90%;
+        margin: 0;
         font-size: 34px;
         line-height: 1.2;
+        text-align: center;
+        white-space: normal;
     }
 
     /* =====================================================
@@ -2299,6 +2359,7 @@ textarea {
     }
 }
 
+
 /* =========================================================
    PETITS MOBILES
    0px -> 480px
@@ -2452,86 +2513,9 @@ textarea {
 }
 
 
-/*******************************
- * TABLETTE
- *******************************/
-
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    .haut-de-page {
-        width: 100%;
-        min-height: 250px;
-    }
-
-    .bougie2 {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        object-position: center center;
-    }
-
-    .haut-de-page h1 {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        width: 90%;
-        font-size: 44px;
-        line-height: 1.2;
-        text-align: center;
-    }
-}
-
-
-/*******************************
- * MOBILE
- *******************************/
-
-@media (max-width: 768px) {
-
-    .haut-de-page {
-        width: 100%;
-        min-height: 200px;
-        overflow: hidden;
-    }
-
-    .bougie2 {
-        display: block;
-        width: 100%;
-        height: 200px;
-
-        /*
-         * On garde une hauteur fixe mais raisonnable.
-         * L'image reste centrée et ne remonte plus.
-         */
-        object-fit: cover;
-        object-position: center center;
-
-        opacity: 0.6;
-    }
-
-    .haut-de-page h1 {
-        position: absolute;
-
-        top: 50%;
-        left: 50%;
-
-        transform: translate(-50%, -50%);
-
-        width: 90%;
-        margin: 0;
-
-        font-size: 34px;
-        line-height: 1.2;
-
-        text-align: center;
-        white-space: normal;
-    }
-}
 
 /* =========================================================
    MENU TABLETTE ET MOBILE
-   Les transports deviennent deux liens directs.
 ========================================================= */
 
 @media (max-width: 1024px) {
@@ -2564,5 +2548,41 @@ textarea {
         padding: 12px 15px;
         border-top: 1px solid #ddd;
         text-align: center;
+    }
+}
+
+/* =====================================================
+    TABLETTE PAYSAGE
+   1024 × 600
+===================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+
+    .acceuil {
+        position: relative;
+    }
+
+    .bougie {
+        height: calc(100vh - 85px);
+        min-height: 0;
+        max-height: none;
+        object-fit: cover;
+    }
+
+    .Titre {
+        width: 90%;
+        top: 53%;
+        gap: 12px;
+    }
+
+    .Titre h1 {
+        font-size: 2.4rem;
+        line-height: 1.15;
+    }
+
+    .fond-camion {
+        width: 75%;
+        max-width: 420px;
+        margin-top: 10px;
     }
 }
